@@ -1,9 +1,9 @@
 import "../styles/App.css";
 import { useState } from "react";
 import { DifficultyContext } from "./contexts/DifficultyContext";
+import SelectionModal from "./Modal";
 import Header from "./Header";
 import Main from "./Main";
-import SelectionModal from "./Modal";
 
 function App() {
   const [difficultyContext, setDifficultyContext] = useState(null);
