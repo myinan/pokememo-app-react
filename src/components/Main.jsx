@@ -7,7 +7,7 @@ function PokeCard({ pokemon }) {
   return (
     <div className="card">
       <img src={pokemon.sprite} alt={pokemon.name} />
-      <p>{pokemon.name}</p>
+      <p className="card-name">{pokemon.name}</p>
     </div>
   );
 }

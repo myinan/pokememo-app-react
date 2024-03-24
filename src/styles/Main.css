@@ -2,21 +2,29 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 1.8rem;
   flex-wrap: wrap;
   padding: 2rem;
 }
 
 main .card {
-  width: 180px;
-  height: 250px;
+  width: 200px;
+  height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
-  border: 1px solid black;
   border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition:
+    transform 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+}
+
+main .card:hover {
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
 .card img {
@@ -25,7 +33,16 @@ main .card {
   object-fit: contain;
 }
 
-.card p {
-  font-size: 1.5rem;
+.card .card-name {
+  font-family: inherit;
+  font-size: 1.05rem;
   font-weight: 700;
+  color: white;
+  letter-spacing: -0.02em;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 8px 6px;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+  white-space: nowrap;
 }

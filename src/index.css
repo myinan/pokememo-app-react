@@ -1,6 +1,11 @@
+@font-face {
+  font-family: "PokeFont";
+  src: url("./assets/poke-font.ttf");
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: gray;
+  font-family: "PokeFont";
 }
