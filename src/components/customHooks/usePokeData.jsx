@@ -1,11 +1,11 @@
 import { useEffect, useContext } from "react";
 import { DifficultyContext } from "../contexts/DifficultyContext";
 
-export default function usePokeData() {
+export default function usePokeData(setPokeData) {
   const TOTAL = 1000;
   const [difficultyContext] = useContext(DifficultyContext);
   const deckLength =
-    difficultyContext === "easy" ? 1 : difficultyContext === "medium" ? 3 : 5;
+    difficultyContext === "easy" ? 5 : difficultyContext === "medium" ? 10 : 15;
 
   useEffect(() => {
     let ignore = false;
@@ -32,25 +32,18 @@ export default function usePokeData() {
           })
         );
 
-        return randomPokemonData;
+        setPokeData(randomPokemonData);
       } catch (error) {
         throw new Error(error);
       }
     }
 
-    function log(data) {
-      // Display the Pokemon data
-      data.forEach((pokemon) => {
-        console.log(`Name: ${pokemon.name}, Sprite: ${pokemon.sprite}`);
-      });
+    if (!ignore && difficultyContext) {
+      getRandomPokemon();
     }
 
-    if (!ignore && difficultyContext) {
-      getRandomPokemon()
-        .then(log)
-        .catch((error) =>
-          console.error("Error fetching random Pokémon data:", error)
-        );
-    }
-  }, [difficultyContext, deckLength]);
+    return () => {
+      ignore = true;
+    };
+  }, [difficultyContext, deckLength, setPokeData]);
 }

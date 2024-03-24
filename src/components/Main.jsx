@@ -1,7 +1,38 @@
+import "../styles/Main.css";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import usePokeData from "./customHooks/usePokeData";
 
-export default function Main() {
-  usePokeData();
+function PokeCard({ pokemon }) {
+  return (
+    <div className="card">
+      <img src={pokemon.sprite} alt={pokemon.name} />
+      <p>{pokemon.name}</p>
+    </div>
+  );
+}
 
-  return <p>Main Component</p>;
+// Define prop-types for the PokeCard component
+PokeCard.propTypes = {
+  pokemon: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    sprite: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default function Main() {
+  const [pokeData, setPokeData] = useState(null);
+  usePokeData(setPokeData);
+
+  return (
+    <main>
+      {!pokeData ? (
+        <p>Fetching...</p>
+      ) : (
+        pokeData.map((pokemon, index) => (
+          <PokeCard key={index} pokemon={pokemon} />
+        ))
+      )}
+    </main>
+  );
 }
