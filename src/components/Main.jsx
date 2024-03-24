@@ -29,9 +29,14 @@ export default function Main() {
       {!pokeData ? (
         <p>Fetching...</p>
       ) : (
-        pokeData.map((pokemon, index) => (
-          <PokeCard key={index} pokemon={pokemon} />
-        ))
+        <>
+          <p>A/{pokeData.length}</p>
+          <div className="cards-container">
+            {pokeData.map((pokemon) => (
+              <PokeCard key={pokemon.name} pokemon={pokemon} />
+            ))}
+          </div>
+        </>
       )}
     </main>
   );

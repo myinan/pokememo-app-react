@@ -1,13 +1,25 @@
 main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1.8rem;
-  flex-wrap: wrap;
-  padding: 2rem;
+  padding: 2rem 0;
 }
 
-main .card {
+main > p {
+  font-weight: 700;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+}
+
+.cards-container .card {
   width: 200px;
   height: 280px;
   display: flex;
@@ -22,7 +34,7 @@ main .card {
     background-color 0.3s ease-in-out;
 }
 
-main .card:hover {
+.cards-container .card:hover {
   transform: scale(1.1);
   background-color: rgba(0, 0, 0, 0.25);
 }
