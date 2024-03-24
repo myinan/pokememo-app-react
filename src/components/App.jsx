@@ -1,7 +1,7 @@
 import "../styles/App.css";
 import { useState } from "react";
 import { DifficultyContext } from "./contexts/DifficultyContext";
-import SelectionModal from "./Modal";
+import SelectionModal from "./SelectionModal";
 import Header from "./Header";
 import Main from "./Main";
 

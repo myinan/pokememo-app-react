@@ -1,11 +1,26 @@
 import "../styles/Main.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import usePokeData from "./customHooks/usePokeData";
 
-function PokeCard({ pokemon }) {
+function PokeCard({
+  pokemon,
+  chosenCards,
+  setChosenCards,
+  continueStatus,
+  setContinueStatus,
+}) {
   return (
-    <div className="card">
+    <div
+      className="card"
+      onClick={() => {
+        chosenCards.includes(pokemon.name)
+          ? setContinueStatus(false)
+          : continueStatus
+            ? setChosenCards([...chosenCards, pokemon.name])
+            : null;
+      }}
+    >
       <img src={pokemon.sprite} alt={pokemon.name} />
       <p className="card-name">{pokemon.name}</p>
     </div>
@@ -18,11 +33,23 @@ PokeCard.propTypes = {
     name: PropTypes.string.isRequired,
     sprite: PropTypes.string.isRequired,
   }).isRequired,
+  chosenCards: PropTypes.array.isRequired,
+  setChosenCards: PropTypes.func.isRequired,
+  continueStatus: PropTypes.bool.isRequired,
+  setContinueStatus: PropTypes.func.isRequired,
 };
 
 export default function Main() {
   const [pokeData, setPokeData] = useState(null);
   usePokeData(setPokeData);
+
+  const [chosenCards, setChosenCards] = useState([]);
+  const [continueStatus, setContinueStatus] = useState(true);
+
+  useEffect(() => {
+    console.log(chosenCards);
+    console.log(continueStatus);
+  }, [chosenCards, continueStatus]);
 
   return (
     <main>
@@ -30,10 +57,19 @@ export default function Main() {
         <p>Fetching...</p>
       ) : (
         <>
-          <p>A/{pokeData.length}</p>
+          <p>
+            {chosenCards.length}/{pokeData.length}
+          </p>
           <div className="cards-container">
             {pokeData.map((pokemon) => (
-              <PokeCard key={pokemon.name} pokemon={pokemon} />
+              <PokeCard
+                key={pokemon.name}
+                pokemon={pokemon}
+                chosenCards={chosenCards}
+                setChosenCards={setChosenCards}
+                continueStatus={continueStatus}
+                setContinueStatus={setContinueStatus}
+              />
             ))}
           </div>
         </>
