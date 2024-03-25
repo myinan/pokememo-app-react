@@ -19,6 +19,7 @@ function PokeCard({
   pokemon,
   chosenCards,
   setChosenCards,
+  setCurrentScore,
 }) {
   const [continueStatusContext, setContinueStatusContext] = useContext(
     ContinueStatusContext
@@ -26,6 +27,7 @@ function PokeCard({
 
   function setAndShuffle() {
     setChosenCards([...chosenCards, pokemon.name]);
+    setCurrentScore((prev) => prev + 1);
     setPokeData(shuffleArray(pokeData));
   }
 
@@ -56,9 +58,10 @@ PokeCard.propTypes = {
   }).isRequired,
   chosenCards: PropTypes.array.isRequired,
   setChosenCards: PropTypes.func.isRequired,
+  setCurrentScore: PropTypes.func.isRequired,
 };
 
-export default function Main({ setRestart }) {
+export default function Main({ setRestart, setCurrentScore }) {
   const [pokeData, setPokeData] = useState(null);
   const [chosenCards, setChosenCards] = useState([]);
 
@@ -86,6 +89,7 @@ export default function Main({ setRestart }) {
                 pokemon={pokemon}
                 chosenCards={chosenCards}
                 setChosenCards={setChosenCards}
+                setCurrentScore={setCurrentScore}
               />
             ))}
           </div>
@@ -98,4 +102,5 @@ export default function Main({ setRestart }) {
 // Define prop-types for the Main component
 Main.propTypes = {
   setRestart: PropTypes.func.isRequired,
+  setCurrentScore: PropTypes.func.isRequired,
 };

@@ -11,6 +11,7 @@
     "git:log": "git log --oneline --abbrev-commit --all --graph --decorate --color"
   },
   "dependencies": {
+    "@uidotdev/usehooks": "",
     "react": "",
     "react-dom": ""
   },
@@ -19,11 +20,11 @@
     "@types/react-dom": "",
     "@vitejs/plugin-react": "",
     "eslint": "",
-    "prettier": "",
     "eslint-config-prettier": "",
     "eslint-plugin-react": "",
     "eslint-plugin-react-hooks": "",
     "eslint-plugin-react-refresh": "",
+    "prettier": "",
     "vite": ""
   }
 }
