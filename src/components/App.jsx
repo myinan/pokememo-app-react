@@ -34,7 +34,7 @@ function App() {
       >
         <div className="app">
           <SelectionModal />
-          <EndGameModal />
+          <EndGameModal currentScore={currentScore} />
           <Header currentScore={currentScore} highestScore={highestScore} />
           {restart ? (
             updateRestartAndRound()
