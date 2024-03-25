@@ -1,38 +1,19 @@
-dialog {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-
-  border: 1px solid black;
-  padding: 0.5rem;
-}
-
-dialog p {
+.selection-modal p {
   font-size: 2rem;
 }
 
-dialog button {
+.selection-modal button {
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: 1px solid black;
   cursor: pointer;
 }
 
-dialog .difficulty-btn-container {
+.selection-modal .difficulty-btn-container {
   display: flex;
   gap: 1rem;
 }
 
-::backdrop {
-  background-color: gray;
-}
-
-.selected {
+.selection-modal .selected {
   background-color: blue;
 }

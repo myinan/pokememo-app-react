@@ -19,7 +19,11 @@ export default function SelectionModal() {
   }, []);
 
   return !show ? null : (
-    <dialog ref={ref}>
+    <dialog
+      key={"selection-dialog"}
+      ref={ref}
+      className="modal selection-modal"
+    >
       <p>Choose difficulty</p>
       <div className="difficulty-btn-container">
         <button

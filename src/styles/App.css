@@ -7,3 +7,22 @@
   background: url("../assets/bg-image.jpg") no-repeat 50% fixed;
   background-size: cover;
 }
+
+.app .modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  border: 1px solid black;
+  padding: 0.5rem;
+}
+
+::backdrop {
+  background: url("../assets/bg-image.jpg") no-repeat 50% fixed;
+}

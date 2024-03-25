@@ -1,22 +1,21 @@
 import "../styles/Main.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import usePokeData from "./customHooks/usePokeData";
+import { ContinueStatusContext } from "./contexts/ContinueStatusContext";
 
-function PokeCard({
-  pokemon,
-  chosenCards,
-  setChosenCards,
-  continueStatus,
-  setContinueStatus,
-}) {
+function PokeCard({ pokemon, chosenCards, setChosenCards }) {
+  const [continueStatusContext, setContinueStatusContext] = useContext(
+    ContinueStatusContext
+  );
+
   return (
     <div
       className="card"
       onClick={() => {
         chosenCards.includes(pokemon.name)
-          ? setContinueStatus(false)
-          : continueStatus
+          ? setContinueStatusContext(false)
+          : continueStatusContext
             ? setChosenCards([...chosenCards, pokemon.name])
             : null;
       }}
@@ -35,8 +34,6 @@ PokeCard.propTypes = {
   }).isRequired,
   chosenCards: PropTypes.array.isRequired,
   setChosenCards: PropTypes.func.isRequired,
-  continueStatus: PropTypes.bool.isRequired,
-  setContinueStatus: PropTypes.func.isRequired,
 };
 
 export default function Main() {
@@ -44,12 +41,10 @@ export default function Main() {
   usePokeData(setPokeData);
 
   const [chosenCards, setChosenCards] = useState([]);
-  const [continueStatus, setContinueStatus] = useState(true);
 
   useEffect(() => {
     console.log(chosenCards);
-    console.log(continueStatus);
-  }, [chosenCards, continueStatus]);
+  }, [chosenCards]);
 
   return (
     <main>
@@ -67,8 +62,6 @@ export default function Main() {
                 pokemon={pokemon}
                 chosenCards={chosenCards}
                 setChosenCards={setChosenCards}
-                continueStatus={continueStatus}
-                setContinueStatus={setContinueStatus}
               />
             ))}
           </div>
