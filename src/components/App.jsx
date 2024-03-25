@@ -10,6 +10,13 @@ import Main from "./Main";
 function App() {
   const [difficultyContext, setDifficultyContext] = useState(null);
   const [continueStatusContext, setContinueStatusContext] = useState(true);
+  const [restart, setRestart] = useState(false);
+  const [round, setRound] = useState(1);
+
+  function updateRestartAndRound() {
+    setRestart(false);
+    setRound((prev) => prev + 1);
+  }
 
   return (
     <DifficultyContext.Provider
@@ -22,7 +29,11 @@ function App() {
           <SelectionModal />
           <EndGameModal />
           <Header />
-          <Main />
+          {restart ? (
+            updateRestartAndRound()
+          ) : (
+            <Main key={round} setRestart={setRestart} />
+          )}
           <footer></footer>
         </div>
       </ContinueStatusContext.Provider>

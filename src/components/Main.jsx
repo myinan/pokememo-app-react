@@ -1,5 +1,5 @@
 import "../styles/Main.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import usePokeData from "./customHooks/usePokeData";
 import { ContinueStatusContext } from "./contexts/ContinueStatusContext";
@@ -58,11 +58,15 @@ PokeCard.propTypes = {
   setChosenCards: PropTypes.func.isRequired,
 };
 
-export default function Main() {
+export default function Main({ setRestart }) {
   const [pokeData, setPokeData] = useState(null);
   const [chosenCards, setChosenCards] = useState([]);
 
   usePokeData(setPokeData);
+
+  useEffect(() => {
+    setRestart(pokeData !== null && pokeData.length === chosenCards.length);
+  }, [chosenCards, pokeData, setRestart]);
 
   return (
     <main>
@@ -90,3 +94,8 @@ export default function Main() {
     </main>
   );
 }
+
+// Define prop-types for the Main component
+Main.propTypes = {
+  setRestart: PropTypes.func.isRequired,
+};
