@@ -1,13 +1,33 @@
 import "../styles/Main.css";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import usePokeData from "./customHooks/usePokeData";
 import { ContinueStatusContext } from "./contexts/ContinueStatusContext";
 
-function PokeCard({ pokemon, chosenCards, setChosenCards }) {
+// Function to shuffle an array
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
+function PokeCard({
+  pokeData,
+  setPokeData,
+  pokemon,
+  chosenCards,
+  setChosenCards,
+}) {
   const [continueStatusContext, setContinueStatusContext] = useContext(
     ContinueStatusContext
   );
+
+  function setAndShuffle() {
+    setChosenCards([...chosenCards, pokemon.name]);
+    setPokeData(shuffleArray(pokeData));
+  }
 
   return (
     <div
@@ -16,7 +36,7 @@ function PokeCard({ pokemon, chosenCards, setChosenCards }) {
         chosenCards.includes(pokemon.name)
           ? setContinueStatusContext(false)
           : continueStatusContext
-            ? setChosenCards([...chosenCards, pokemon.name])
+            ? setAndShuffle()
             : null;
       }}
     >
@@ -28,6 +48,8 @@ function PokeCard({ pokemon, chosenCards, setChosenCards }) {
 
 // Define prop-types for the PokeCard component
 PokeCard.propTypes = {
+  pokeData: PropTypes.array.isRequired,
+  setPokeData: PropTypes.func.isRequired,
   pokemon: PropTypes.shape({
     name: PropTypes.string.isRequired,
     sprite: PropTypes.string.isRequired,
@@ -38,13 +60,9 @@ PokeCard.propTypes = {
 
 export default function Main() {
   const [pokeData, setPokeData] = useState(null);
-  usePokeData(setPokeData);
-
   const [chosenCards, setChosenCards] = useState([]);
 
-  useEffect(() => {
-    console.log(chosenCards);
-  }, [chosenCards]);
+  usePokeData(setPokeData);
 
   return (
     <main>
@@ -59,6 +77,8 @@ export default function Main() {
             {pokeData.map((pokemon) => (
               <PokeCard
                 key={pokemon.name}
+                pokeData={pokeData}
+                setPokeData={setPokeData}
                 pokemon={pokemon}
                 chosenCards={chosenCards}
                 setChosenCards={setChosenCards}
