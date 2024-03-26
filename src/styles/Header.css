@@ -4,7 +4,27 @@ header {
   justify-content: center;
   align-items: center;
   padding-top: 1rem;
-  gap: 1.5rem;
+  gap: 2rem;
+}
+
+header h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+header h1::before {
+  content: url("../assets/pokeball-png.png");
+  display: inline-block;
+}
+
+.poke {
+  color: #dc2626;
+}
+
+.memo {
+  color: white;
 }
 
 .score-container {

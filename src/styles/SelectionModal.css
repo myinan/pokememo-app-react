@@ -6,7 +6,7 @@
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: 1px solid black;
-  cursor: pointer;
+  cursor: inherit;
 }
 
 .selection-modal .difficulty-btn-container {

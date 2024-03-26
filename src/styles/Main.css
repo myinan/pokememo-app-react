@@ -28,7 +28,6 @@ main > p {
   align-items: center;
   border-radius: 0.5rem;
   background-color: rgba(0, 0, 0, 0.15);
-  cursor: pointer;
   transition:
     transform 0.3s ease-in-out,
     background-color 0.3s ease-in-out;

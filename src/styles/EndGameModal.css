@@ -1,3 +1,8 @@
 .endgame-modal {
   z-index: 2;
+  cursor: inherit;
+}
+
+.endgame-modal button {
+  cursor: inherit;
 }
