@@ -45,7 +45,6 @@ function App() {
               setCurrentScore={setCurrentScore}
             />
           )}
-          <footer></footer>
         </div>
       </ContinueStatusContext.Provider>
     </DifficultyContext.Provider>
