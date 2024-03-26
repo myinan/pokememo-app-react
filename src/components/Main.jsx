@@ -1,4 +1,5 @@
 import "../styles/Main.css";
+import pokeball from "../assets/pokeball.svg";
 import { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import usePokeData from "./customHooks/usePokeData";
@@ -74,7 +75,7 @@ export default function Main({ setRestart, setCurrentScore }) {
   return (
     <main>
       {!pokeData ? (
-        <p>Fetching...</p>
+        <img src={pokeball} alt="Pokeball" className="pokeball"></img>
       ) : (
         <>
           <p>

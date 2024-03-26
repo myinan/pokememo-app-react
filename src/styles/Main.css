@@ -58,3 +58,19 @@ main > p {
   text-transform: capitalize;
   white-space: nowrap;
 }
+
+.pokeball {
+  margin-top: 10%;
+  width: 100px;
+  height: 100px;
+  animation: rotate 0.4s linear 0s infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
