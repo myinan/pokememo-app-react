@@ -1,4 +1,5 @@
 import "../styles/EndGameModal.css";
+import pikachuGif from "../assets/pikachu.gif";
 import { useRef, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { ContinueStatusContext } from "./contexts/ContinueStatusContext";
@@ -21,8 +22,9 @@ export default function EndGameModal({ currentScore }) {
 
   return continueStatusContext ? null : (
     <dialog key={"endgame-dialog"} ref={ref} className="modal endgame-modal">
-      <p>Game over</p>
-      <p>Current Score: {currentScore}</p>
+      <h1>Game over.</h1>
+      <img src={pikachuGif} alt="Pikachu"></img>
+      <h2>Final Score: {currentScore}</h2>
       <button type="button" onClick={refresh}>
         Play again ?
       </button>

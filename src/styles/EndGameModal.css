@@ -1,8 +1,28 @@
 .endgame-modal {
   z-index: 2;
   cursor: inherit;
+
+  gap: 1rem;
+  padding: 1.5rem 0;
+  width: clamp(400px, 40%, 500px);
+}
+
+.endgame-modal img {
+  width: 60%;
+  height: auto;
 }
 
 .endgame-modal button {
+  font-size: 1.1rem;
+  font-weight: 900;
   cursor: inherit;
+  padding: 1rem;
+  background-color: transparent;
+  border: none;
+}
+
+.endgame-modal button:hover {
+  text-decoration-line: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 5px;
 }
