@@ -24,33 +24,41 @@ export default function SelectionModal() {
       ref={ref}
       className="modal selection-modal"
     >
-      <p>Choose difficulty</p>
-      <div className="difficulty-btn-container">
-        <button
-          type="button"
-          value="easy"
-          onClick={onClick}
-          className={currentDifficulty === "easy" ? "selected" : ""}
-        >
-          Easy
-        </button>
-        <button
-          type="button"
-          value="medium"
-          onClick={onClick}
-          className={currentDifficulty === "medium" ? "selected" : ""}
-        >
-          Medium
-        </button>
-        <button
-          type="button"
-          value="hard"
-          onClick={onClick}
-          className={currentDifficulty === "hard" ? "selected" : ""}
-        >
-          Hard
-        </button>
+      <div className="welcome-text">
+        <h4>Welcome to</h4>
+        <h1>PokeMemo</h1>
       </div>
+
+      <div className="difficulty-selection-container">
+        <p>Choose difficulty</p>
+        <div className="difficulty-btn-container">
+          <button
+            type="button"
+            value="easy"
+            onClick={onClick}
+            className={currentDifficulty === "easy" ? "selected" : ""}
+          >
+            Easy
+          </button>
+          <button
+            type="button"
+            value="medium"
+            onClick={onClick}
+            className={currentDifficulty === "medium" ? "selected" : ""}
+          >
+            Medium
+          </button>
+          <button
+            type="button"
+            value="hard"
+            onClick={onClick}
+            className={currentDifficulty === "hard" ? "selected" : ""}
+          >
+            Hard
+          </button>
+        </div>
+      </div>
+
       <button
         className="start-btn"
         onClick={() => {
