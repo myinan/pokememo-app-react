@@ -73,3 +73,35 @@ main > p {
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 1000px) {
+  .cards-container .card {
+    width: 150px;
+    height: 220px;
+  }
+
+  .card img {
+    padding: 0.5rem;
+    height: 180px;
+  }
+
+  .card .card-name {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .cards-container .card {
+    width: 100px;
+    height: 170px;
+  }
+
+  .card img {
+    padding: 0.1rem;
+    height: 150px;
+  }
+
+  .card .card-name {
+    font-size: 0.6rem;
+  }
+}
