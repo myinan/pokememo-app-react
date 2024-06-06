@@ -20,5 +20,6 @@
 }
 
 ::backdrop {
-  background: url("../assets/bg-image.jpg") no-repeat 50% fixed;
+  background: url("../assets/bg-image.jpg") no-repeat;
+  background-size: cover;
 }
